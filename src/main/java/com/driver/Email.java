@@ -18,6 +18,14 @@ public class Email {
         return password;
     }
 
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     public void changePassword(String oldPassword, String newPassword){
         //Change password only if the oldPassword is equal to current password and the new password meets all of the following:
         // 1. It contains at least 8 characters
@@ -25,5 +33,33 @@ public class Email {
         // 3. It contains at least one lowercase letter
         // 4. It contains at least one digit
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
+        if(oldPassword.equals(getPassword())){
+
+            boolean upperCase= false, lowerCase= false, digit= false, specialCase= false;
+
+            if(newPassword.length()==8){
+                for(int i=0; i<newPassword.length(); i++){
+
+                    char c= newPassword.charAt(i);
+
+                    if(Character.isUpperCase(c))
+                        upperCase= true;
+
+                    else if(Character.isLowerCase(c))
+                        lowerCase= true;
+
+                    else if(Character.isDigit(c))
+                        digit= true;
+
+                    else specialCase= true;
+
+                    if(upperCase && lowerCase && digit && specialCase){
+                        setPassword(newPassword);
+                        break;
+                    }
+                }
+
+            }
+        }
     }
 }
