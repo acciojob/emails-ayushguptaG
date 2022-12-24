@@ -35,9 +35,8 @@ public class Email {
         // 5. It contains at least one special character. Any character apart from alphabets and digits is a special character
         if(oldPassword.equals(getPassword())){
 
-            boolean upperCase= false, lowerCase= false, digit= false, specialCase= false;
+            boolean upperCase= false, lowerCase= false, digit= false, specialChar= false;
 
-            if(newPassword.length()==8){
                 for(int i=0; i<newPassword.length(); i++){
 
                     char c= newPassword.charAt(i);
@@ -51,14 +50,11 @@ public class Email {
                     else if(Character.isDigit(c))
                         digit= true;
 
-                    else specialCase= true;
+                    else specialChar= true;
 
-                    if(upperCase && lowerCase && digit && specialCase){
-                        setPassword(newPassword);
-                        break;
-                    }
                 }
-
+                if(newPassword.length()>=8 && upperCase && lowerCase && digit && specialChar) {
+                    setPassword(newPassword);
             }
         }
     }
