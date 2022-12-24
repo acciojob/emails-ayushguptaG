@@ -37,7 +37,7 @@ public class Workspace extends Gmail{
 //        Collections.sort(calendar, (Meeting m1, Meeting m2) -> (m1.getEndTime().compareTo(m2.getEndTime())));
 
         Collections.sort(calendar, new Sortbyendtime());
-        LocalTime curEndTime= calendar.get(0).getStartTime();
+        LocalTime curEndTime= calendar.get(0).getEndTime();
         int maxMeetings= 1;
 
         for(Meeting meeting : calendar){
